@@ -1,4 +1,4 @@
-## Azure Deployment
+## Azure Deployments
 
 - Add these variables to the app services configration
 
