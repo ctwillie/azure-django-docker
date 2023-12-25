@@ -9,7 +9,7 @@ env_has_website_hostname = website_hostname is not None
 
 ALLOWED_HOSTS = [website_hostname] if env_has_website_hostname else []
 CSRF_TRUSTED_ORIGINS = ['https://' + website_hostname] if env_has_website_hostname else []
-DEBUG = False
+DEBUG = True
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
