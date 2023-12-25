@@ -11,7 +11,7 @@ ALLOWED_HOSTS = [website_hostname] if env_has_website_hostname else []
 CSRF_TRUSTED_ORIGINS = ['https://' + website_hostname] if env_has_website_hostname else []
 DEBUG = True
 
-# SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -38,13 +38,13 @@ DATABASES = {
     }
 }
 
-# CACHES = {
-#         "default": {  
-#             "BACKEND": "django_redis.cache.RedisCache",
-#             "LOCATION": os.environ.get('AZURE_REDIS_CONNECTIONSTRING'),
-#             "OPTIONS": {
-#                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
-#                 "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor",
-#         },
-#     }
-# }
+CACHES = {
+        "default": {  
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": os.environ.get('AZURE_REDIS_CONNECTIONSTRING'),
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+                "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor",
+        },
+    }
+}
