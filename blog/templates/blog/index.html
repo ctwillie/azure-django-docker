@@ -1,23 +1,45 @@
+{% extends 'base.html' %} {% block content %}
+
 <h2>Blog Index</h2>
 
-<p style="margin-bottom: 50px">
-  Create a new blog <a href="{% url 'blog:create' %}">here</a>.
+<p class="mb-10 text-sm text-gray-600">
+  Create a new blog
+  <a class="text-blue-600 font-bold" href="{% url 'blog:create' %}">here</a>.
 </p>
 
-{% for blog in blogs %}
-<div>
-  <h4>{{ blog.title }}</h4>
-  <p>{{ blog.body }}</p>
-  <p>{{ blog.pub_date|date:'F d Y' }}</p>
-
-  <a href="{% url 'blog:update' blog.id %}">edit</a>
-
-  <form
-    onsubmit="return confirm('Are you sure you want to delete {{ blog.title }}?')"
-    action="{% url 'blog:delete' blog.id %}"
-  >
-    <button type="submit">delete</button>
-  </form>
+<div class="mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16">
+  {% for blog in blogs %}
+  <article class="flex max-w-xl flex-col items-start justify-between">
+    <div class="flex items-center gap-x-4 text-xs">
+      <time datetime="{{ blog.pub_date }}" class="text-gray-500"
+        >{{ blog.pub_date|date:'F d Y' }}</time
+      >
+    </div>
+    <div class="group relative">
+      <h3
+        class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600"
+      >
+        <a href="{% url 'blog:update' blog.id %}"> {{ blog.title }} </a>
+      </h3>
+      <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+        {{ blog.body }}
+      </p>
+      <form
+        onsubmit="return confirm('Are you sure you want to delete {{ blog.title }}?')"
+        action="{% url 'blog:delete' blog.id %}"
+      >
+        <button
+          type="submit"
+          class="rounded bg-indigo-50 my-4 px-2 py-1 text-xs font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"
+        >
+          -
+        </button>
+      </form>
+    </div>
+  </article>
+  {% empty %}
+  <p class="mb-10 text-sm text-gray-600">Nothing has been posted yet</p>
+  {% endfor %}
 </div>
-<hr />
-{% endfor %}
+
+{% endblock %}

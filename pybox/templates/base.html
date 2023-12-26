@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{% block title %}Pybox{% endblock %}</title>
+  </head>
+  {% comment %} Body {% endcomment %}
+  <body class="w-screen h-screen">
+    <div class="container mx-auto pt-10">{% block content %}{% endblock %}</div>
+  </body>
+  {% comment %} End Body {% endcomment %} {% comment %} Footer {% endcomment %}
+  <footer class="bg-white absolute bottom-0 left-40">
+    <div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+      <nav
+        class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12"
+        aria-label="Footer"
+      >
+        <div class="pb-6">
+          <a
+            href="{% url 'home' %}"
+            class="text-sm leading-6 text-gray-600 hover:text-gray-900"
+            >Home</a
+          >
+        </div>
+        <div class="pb-6">
+          <a
+            href="{% url 'blog:index' %}"
+            class="text-sm leading-6 text-gray-600 hover:text-gray-900"
+            >Blog</a
+          >
+        </div>
+      </nav>
+    </div>
+  </footer>
+  {% comment %} End Footer {% endcomment %}
+</html>

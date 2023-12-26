@@ -1,7 +1,17 @@
-<h2>Blog Update</h2>
+{% extends 'base.html' %}
+{% load tailwind_filters %}
+
+{% block content %}
+<h2 class="mb-10">Blog Update</h2>
 
 <form action="{% url "blog:update" blog.id %}" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update</button>
+    {{ form|crispy }}
+    <button
+      type="submit"
+      class="rounded bg-indigo-50 my-4 px-2 py-1 text-xs font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"
+    >
+      Update
+    </button>
 </form>
+{% endblock %}
