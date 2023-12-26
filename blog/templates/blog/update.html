@@ -1,0 +1,7 @@
+<h2>Blog Update</h2>
+
+<form action="{% url "blog:update" blog.id %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+</form>

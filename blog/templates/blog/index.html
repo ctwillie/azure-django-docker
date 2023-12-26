@@ -1,0 +1,23 @@
+<h2>Blog Index</h2>
+
+<p style="margin-bottom: 50px">
+  Create a new blog <a href="{% url 'blog:create' %}">here</a>.
+</p>
+
+{% for blog in blogs %}
+<div>
+  <h4>{{ blog.title }}</h4>
+  <p>{{ blog.body }}</p>
+  <p>{{ blog.pub_date|date:'F d Y' }}</p>
+
+  <a href="{% url 'blog:update' blog.id %}">edit</a>
+
+  <form
+    onsubmit="return confirm('Are you sure you want to delete {{ blog.title }}?')"
+    action="{% url 'blog:delete' blog.id %}"
+  >
+    <button type="submit">delete</button>
+  </form>
+</div>
+<hr />
+{% endfor %}
