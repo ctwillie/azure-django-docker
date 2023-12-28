@@ -4,6 +4,7 @@
 
   - DJANGO_SECRET_KEY = secret-value
   - DJANGO_ENV = production
+  - DJANGO_ALLOWED_HOSTNAME = <azure-webapp-host>
   - SCM_DO_BUILD_DURING_DEPLOYMENT = true
 
 - Disable secure database client connections in Mysql server parameters
