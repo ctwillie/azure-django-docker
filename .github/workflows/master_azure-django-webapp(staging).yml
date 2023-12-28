@@ -72,5 +72,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: "azure-django-webapp/Staging"
+          app-name: "azure-django-webapp"
           slot-name: "Staging"
