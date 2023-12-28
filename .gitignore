@@ -118,3 +118,4 @@ cython_debug/
 
 # Azure
 __azurite*
+__queuestorage__
