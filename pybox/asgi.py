@@ -11,7 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-django_env = os.environ.get("DJANGO_ENV", "local")
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", f"pybox.settings.{django_env}")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", f"pybox.settings.production")
 
 application = get_asgi_application()
