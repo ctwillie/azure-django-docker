@@ -18,7 +18,7 @@
 
 ## Deployment Strategy 1
 
-- Deploy app to an app service and database (without redis cache) connected to GH with a staging deployment slot
+- Description: Deploy app to an app service and database (without redis cache) connected to GH with a staging deployment slot
 
 1. Create a resource group and deploy a web app + database
 2. Add the below application settings to the web app as deployment slot settings
@@ -46,7 +46,12 @@
 - etc
 
 8. Turn file system application logging ON in `App Service Logs` on the Staging web app
-9. Connect the Staging slot to GH.
+9. Create a new mysql database that uses the same VNet/subnet as the production database and update the Staging slots AZURE-MYSQL-\* application setting values to point to this instance
+
+- Create the staging database in this instance
+- Ssh and run the database migrations
+
+10. Connect the Staging slot to GH.
 
 - Update the created managed identitys' GH federated credential to use the `Staging` environment
 - Give access to the managed identity to the production web app resource
